@@ -14,7 +14,7 @@ module.exports = {
       accounts: [process.env.PRIVATE_KEY],
     },
     sepolia: {
-      url: "https://sepolia.infura.io/v3/d8ed0bd1de8242d998a1405b6932ab33",
+      url: "https://sepolia.infura.io/v3/c5daace64d64444790a8d4bdd7c027a6",
       accounts: [process.env.PRIVATE_KEY],
     },
   },
