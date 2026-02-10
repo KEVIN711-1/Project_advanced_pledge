@@ -45,6 +45,8 @@ API
     go run pledge_api.go
 
 pool task
+    export $(cat .env | xargs) 加载配置文件
+
 
     cd schedule
-    go run pledge_task.go
+    go run pledge_task.go 
