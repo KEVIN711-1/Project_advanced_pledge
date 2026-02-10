@@ -1,0 +1,23 @@
+{"level":"info","time":"2026-02-10T21:28:50.589+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:16","msg":"Init Mysql","serviceName":"pledge"}
+{"level":"panic","time":"2026-02-10T21:28:50.590+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:37","msg":"mysql connention error ==>  dial tcp 127.0.0.1:33009: connect: connection refused","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:39:40.115+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:16","msg":"Init Mysql","serviceName":"pledge"}
+{"level":"panic","time":"2026-02-10T21:39:40.117+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:37","msg":"mysql connention error ==>  dial tcp 127.0.0.1:33006: connect: connection refused","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:40:24.014+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:16","msg":"Init Mysql","serviceName":"pledge"}
+{"level":"panic","time":"2026-02-10T21:40:24.039+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:37","msg":"mysql connention error ==>  Error 1045: Access denied for user 'pledge_v21'@'172.18.0.1' (using password: YES)","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:40:25.913+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:16","msg":"Init Mysql","serviceName":"pledge"}
+{"level":"panic","time":"2026-02-10T21:40:25.917+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:37","msg":"mysql connention error ==>  Error 1045: Access denied for user 'pledge_v21'@'172.18.0.1' (using password: YES)","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:51:24.100+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:16","msg":"Init Mysql","serviceName":"pledge"}
+{"level":"panic","time":"2026-02-10T21:51:24.104+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:37","msg":"mysql connention error ==>  dial tcp 127.0.0.1:3307: connect: connection refused","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:56:28.360+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:16","msg":"Init Mysql","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:56:28.369+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/redis.go:15","msg":"Init Redis","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:58:32.202+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:16","msg":"Init Mysql","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:58:32.204+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/redis.go:15","msg":"Init Redis","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:58:43.208+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:16","msg":"Init Mysql","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:58:43.210+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/redis.go:15","msg":"Init Redis","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:58:59.053+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:16","msg":"Init Mysql","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T21:58:59.056+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/redis.go:15","msg":"Init Redis","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T22:02:22.414+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/mysql.go:16","msg":"Init Mysql","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T22:02:22.416+0800","line":"/home/Project_advanced_pledge/pledge-backend/db/redis.go:15","msg":"Init Redis","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T22:02:22.509+0800","line":"/home/Project_advanced_pledge/pledge-backend/api/models/ws/ws.go:118","msg":"WsServer start","serviceName":"pledge"}
+{"level":"info","time":"2026-02-10T22:02:22.509+0800","line":"/home/Project_advanced_pledge/pledge-backend/api/models/kucoin/kucoin.go:17","msg":"GetExchangePrice ","serviceName":"pledge"}
+{"level":"error","time":"2026-02-10T22:02:22.510+0800","line":"/home/Project_advanced_pledge/pledge-backend/api/models/kucoin/kucoin.go:22","msg":"get plgr price from redis err redigo: nil returned","serviceName":"pledge"}

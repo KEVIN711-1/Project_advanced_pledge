@@ -1,0 +1,38 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: pledge-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: pledge_v21
+      MYSQL_USER: pledge_v21
+      MYSQL_PASSWORD: pledge_v21
+    ports:
+      - "3307:3306"
+    volumes:
+      - pledge_mysql_data:/var/lib/mysql
+
+  redis:
+    image: redis:7-alpine
+    container_name: pledge-redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    command: redis-server --requirepass "pledger_web3"
+    volumes:
+      - pledge_redis_data:/data
+
+  # 如果需要RADIUS，使用正确的镜像（如果不需要可以删除这部分）
+  # radius:
+  #   image: freeradius/freeradius-server:latest
+  #   container_name: pledge-radius
+  #   restart: unless-stopped
+  #   ports:
+  #     - "1812-1813:1812-1813/udp"
+  #   volumes:
+  #     - ./raddb:/etc/raddb
+
+volumes:
+  pledge_mysql_data:
+  pledge_redis_data:

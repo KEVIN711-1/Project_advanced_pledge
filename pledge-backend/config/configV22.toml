@@ -1,7 +1,7 @@
 [mysql]
 address = "192.168.0.106"
 #address = "127.0.0.1"
-port = "3306"
+port = "3307"
 db_name = "pledge_v22"
 user_name = "pledge_v22"
 password = "pledge_v22"
