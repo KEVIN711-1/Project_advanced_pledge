@@ -1,38 +1,41 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
+const { ethers } = require("hardhat");
 
-let oracleAddress = "0x3D7155586d33a31851e28bd4Ead18A413Bc8F599";
-let swapRouter = "0xbe9c40a0eab26a4223309ea650dea0dd4612767e";
-let feeAddress = "0xa5D1E71aC4cE6336a70E8a0cb1B6DFa87BccEf4c";
-let multiSignatureAddress = "0xcdC5A05A0A68401d5FCF7d136960CBa5aEa990Dd";
-
-const {ethers} = require("hardhat");
+// Sepolia 测试网已部署合约地址
+let oracleAddress = "0x18bC845077415Ed55600684f1E5B475247cF5161";
+let swapRouter = "0xbd679839DD6990f5B690E0E1BF32129d737D4307"; 
+let feeAddress = "0x0eD4b67d787bB1a47E06F0C6927C223FFd2cB6BC"; //接收合约收益的地址
+let multiSignatureAddress = "0x35553116E662c39a56380584c0352375E8D06380";
 
 async function main() {
+  const [deployer] = await ethers.getSigners();
 
-  // const [deployerMax,,,,deployerMin] = await ethers.getSigners();
-  const [deployerMin,,,,deployerMax] = await ethers.getSigners();
+  console.log("Deploying PledgePool with account:", deployer.address);
+  console.log("Account balance:", (await ethers.provider.getBalance(deployer.address)).toString());
+  
+  console.log("\n📋 Deployment parameters:");
+  console.log("  Oracle:", oracleAddress);
+  console.log("  SwapRouter:", swapRouter);
+  console.log("  FeeAddress:", feeAddress);
+  console.log("  MultiSignature:", multiSignatureAddress);
 
-  console.log(
-    "Deploying contracts with the account:",
-    deployerMin.address
+  const PledgePool = await ethers.getContractFactory("PledgePool");
+  const pledgePool = await PledgePool.connect(deployer).deploy(
+    oracleAddress,
+    swapRouter, 
+    feeAddress,
+    multiSignatureAddress
   );
 
-  console.log("Account balance:", (await deployerMin.getBalance()).toString());
-
-  const pledgePoolToken = await ethers.getContractFactory("PledgePool");
-  const pledgeAddress = await pledgePoolToken.connect(deployerMin).deploy(oracleAddress,swapRouter,feeAddress, multiSignatureAddress);
-
-
-  console.log("pledgeAddress address:", pledgeAddress.address);
+  await pledgePool.waitForDeployment();
+  const pledgeAddress = await pledgePool.getAddress();
+  
+  console.log("\n✅ PledgePool deployed to:", pledgeAddress);
+  console.log("🔗 Transaction hash:", pledgePool.deploymentTransaction().hash);
 }
 
 main()
   .then(() => process.exit(0))
   .catch(error => {
-    console.error(error);
+    console.error("\n❌ Deployment failed:", error.message);
     process.exit(1);
   });

@@ -23,9 +23,9 @@ idle_timeout = 0
 #[testnet]
 #chain_id = "11155111"
 #net_url = "https://ethereum-sepolia-rpc.publicnode.com"
-#plgr_address = "0x790B6C61Ca2f5E0275a6b0D47c9e8DDc6b479EeA"
-#pledge_pool_token = "0xbEd2F048532b859EA0272E87C07489ad7A1772DE"
-#bsc_pledge_oracle_token = "0xB574D61E7121320D708C6eC988c9CDEEc0cDDAEa"
+#plgr_address = "0x351d7443282751Bc31360fd2a5f868605d6e1a15"
+#pledge_pool_token = "0x23FB053aa94901F3922475304639Bc20672d9b08"
+#bsc_pledge_oracle_token = "0x18bC845077415Ed55600684f1E5B475247cF5161"
 
 [testnet]
 chain_id = "97"
