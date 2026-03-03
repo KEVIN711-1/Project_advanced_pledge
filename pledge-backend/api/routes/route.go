@@ -1,15 +1,16 @@
 package routes
 
 import (
-	"github.com/gin-gonic/gin"
 	"pledge-backend/api/controllers"
 	"pledge-backend/api/middlewares"
 	"pledge-backend/config"
+
+	"github.com/gin-gonic/gin"
 )
 
 func InitRoute(e *gin.Engine) *gin.Engine {
 
-	// version group
+	// version group version=v21
 	v2Group := e.Group("/api/v" + config.Config.Env.Version)
 
 	// pledge-defi backend
