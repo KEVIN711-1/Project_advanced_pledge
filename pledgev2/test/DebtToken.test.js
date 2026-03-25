@@ -7,8 +7,13 @@ describe("DebtToken",function () {
     let debtToken;
     beforeEach(async ()=>{
         [minter, alice, bob, carol, _] = await ethers.getSigners();
+        const multiSignatureToken = await ethers.getContractFactory("MockMultiSignature");
+        const multiSignature = await multiSignatureToken.deploy();
+        await multiSignature.waitForDeployment();
+
         const DebtToken = await ethers.getContractFactory("DebtToken");
-        debtToken = await DebtToken.deploy("spBUSD_1", "spBUSD_1");
+        debtToken = await DebtToken.deploy("spBUSD_1", "spBUSD_1", await multiSignature.getAddress());
+        await debtToken.waitForDeployment();
     });
 
     it("check if mint right", async function() {
@@ -26,8 +31,11 @@ describe("DebtToken",function () {
         await expect(debtToken.connect(alice).mint(bob.address, 100000)).to.be.revertedWith("Token: caller is not the minter");
       });
 
-    it ("can not add minter by others", async function() {
-        await expect(debtToken.connect(alice).addMinter(alice.address)).to.be.revertedWith("Ownable: caller is not the owner");
+    it ("addMinter succeeds with mocked multiSignature", async function() {
+        expect(await debtToken.getMinterLength()).to.equal(0);
+        await debtToken.connect(alice).addMinter(alice.address);
+        expect(await debtToken.isMinter(alice.address)).to.equal(true);
+        expect(await debtToken.getMinterLength()).to.equal(1);
       });
 
     it ("after addMinter by owner, mint by minter should succeed", async function() {

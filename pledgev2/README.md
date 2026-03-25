@@ -7,7 +7,15 @@ pledge V2 contract
 npm install
 npx hardhat compile
 npx hardhat test
-npx hardhat ignition deploy ./ignition/modules/PledgePool.js
+npx hardhat ignition deploy ./ignition/modules/PledgePool.js 
+
+#ignition 部署工具，一次部署之后就会存储部署的合约地址到本地，下次再运行就不会部署新的地址，而是返回已部署好的地址
+
+#实际部署顺序必须是：
+1️⃣ MultiSignature
+2️⃣ Oracle（依赖 MultiSignature）
+3️⃣ SwapRouter
+4️⃣ PledgePool（依赖 Oracle + Router + MultiSig）
 
 ```
 

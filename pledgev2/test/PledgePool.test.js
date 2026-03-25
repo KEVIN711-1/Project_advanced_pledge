@@ -71,10 +71,10 @@ describe("PledgePool", function () {
         show({ endTime });
         
         // 池参数配置
-        let interestRate = 1000000; // 利率
+        let interestRate = 1000000; // 利率10%
         let maxSupply = BigInt(100000000000000000000000); // 最大供应量
-        let martgageRate = 200000000; // 抵押率
-        let autoLiquidateThreshold = 20000000; // 自动清算阈值
+        let martgageRate = 200000000; // 抵押率200%
+        let autoLiquidateThreshold = 20000000; // 自动清算阈值20%
         
         // 创建池信息 - 使用统一的地址获取方式
         await pledgeAddress.connect(minter).createPoolInfo(
@@ -209,7 +209,6 @@ describe("PledgePool", function () {
         // 增加时间，使池状态改变
         await increase(1000);
         // 存款期1000s，超时之后，再次借款应该失败revert
-        // 测试跳过，因为使用了不支持的断言语法
         await expect(pledgeAddress.connect(minter).depositLend(0, BigInt(1000*1e18))).to.be.reverted;  // ✅ 对于合约交易失败
     });
     
@@ -233,7 +232,6 @@ describe("PledgePool", function () {
         
         await increase(1000);
         // 存款期1000s，超时之后，再次借款应该失败revert
-        // 测试跳过，因为使用了不支持的断言语法
         await expect(pledgeAddress.connect(minter).depositBorrow(0, BigInt(1000*1e18), deadLine)).to.be.reverted;
     });
     
@@ -603,7 +601,6 @@ describe("PledgePool", function () {
         // 增加大量时间
         await increase(100000);
         
-        // 测试跳过，因为使用了不支持的断言语法
         await expect(pledgeAddress.connect(minter).depositLend(0, BigInt(1000*1e18))).to.be.reverted;
     });
     
@@ -620,7 +617,6 @@ describe("PledgePool", function () {
         let num = await pledgeAddress.userLendInfo(await minter.getAddress(), 0);
         expect(num[0].toString()).to.be.equal(BigInt(1000000000000000000000).toString());
         
-        // 测试跳过，因为使用了不支持的断言语法
         await expect(pledgeAddress.connect(minter).claimLend(0)).to.be.reverted;
     });
 });
